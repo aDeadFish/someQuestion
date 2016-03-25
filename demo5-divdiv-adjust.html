@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margim:0;padding:0;box-sizing: border-box;}
+        /*//方法1：flex*/
+        /*.container{display: flex;}*/
+        /*.test1{width: 80px;flex: 0 0 auto;}*/
+        /*.test2{flex:1;outline: 1px solid black;}*/
+
+        /*方法2：绝对定位*/
+        /*.container{padding-left:80px;}*/
+        /*.test1{width: 80px;position: absolute;left: 0;}*/
+        /*.test2{outline: 1px solid black;}*/
+
+        /*方法3：float*/
+        .container{}
+        .test1{width: 80px;float: left;}
+        .test2{width: auto;outline: 1px solid black;margin-left: 80px;}
+
+        /*方法4：table*/
+        /*.container{width:100%;display: table;}*/
+        /*.test1{width: 80px;outline: 1px solid black;display: table-cell;}*/
+        /*.test2{width: auto;outline: 1px solid black;display: table-cell;}*/
+
+
+        /*label+input*/
+        /*//方法1：flex*/
+        /*.container1{display: flex;}*/
+        /*.test3{width: 80px;flex: 0 0 auto;}*/
+        /*.test4{flex:1;}*/
+
+        /*方法2：绝对定位*/
+        /*.container1{padding-left:80px;}*/
+        /*.test3{width: 80px;position: absolute;left: 0;}*/
+        /*.test4{width: 100%;}*/
+
+        /*方法3：table*/
+        /*.container1{width:100%;display: table;}*/
+        /*.test3{width: 80px;outline: 1px solid black;display: table-cell;}*/
+        /*.test4{width: 100%;outline: 1px solid black;display: table-cell;}*/
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="test1">固定</div>
+    <div class="test2">自适应</div>
+</div>
+
+<div class="container1">
+    <label class="test3">这是前缀</label>
+    <input class="test4" type="text" placeholder="这是内容">
+</div>
+</body>
+</html>

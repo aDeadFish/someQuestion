@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="test" style="width: 200px;height: 200px;background-color: #cccccc;">
+    <span>sdafnisndf-asdf</span>
+</div>
+<script>
+    if(document.getElementById('test').addEventListener)
+    {
+        document.getElementById('test').addEventListener('click',testNode,false);
+    }else if(document.getElementById('test').attachEvent){
+        document.getElementById('test').attachEvent('onclick',testNode);
+    }
+    function testNode(e){
+        var et=e ||window.event;
+        var tg=et.target||et.srcElement;
+        console.log(tg.innerHTML);
+//        if(tg.nodeName.toLowerCase() == "span"){
+//            console.log(tg.innerHTML);
+////            console.log(document.getElementsByTagName(tg.nodeName.toLowerCase()).innerText);
+//        }
+    }
+
+    function stopPro(e) {
+        if (e && e.stopPropagation) {
+            //W3C取消冒泡事件
+            e.stopPropagation();
+        } else {
+            //IE取消冒泡事件
+            window.event.cancelBubble = true;
+        }
+    }
+
+    //阻止浏览器的默认行为
+      function stopDefault( e ) {
+          //阻止默认浏览器动作(W3C)
+          if ( e && e.preventDefault )
+              e.preventDefault();
+          //IE中阻止函数器默认动作的方式
+          else
+              window.event.returnValue = false;
+          return false;
+      }
+</script>
+</body>
+</html>

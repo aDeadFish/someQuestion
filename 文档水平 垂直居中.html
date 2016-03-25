@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{height: 100%;}
+        /*方法1：table 和 table-cell*/
+        /*.main{width: 100%;height:100%;*/
+            /*text-align: center;display: table;}*/
+        /*.text{width: 100%;*/
+            /*height: 100%;*/
+            /*display: table-cell;*/
+            /*vertical-align: middle;}*/
+
+        /*方法2：添加伪类*/
+        .main{
+            position: fixed;
+            left: 0;
+            top:0;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+        .main:after{
+            content: " "; display: inline-block; vertical-align: middle; height: 100% }
+        .text{ display: inline-block; border: 3px solid lightblue;word-break: break-all;}  /*字母数字默认不换行，因此添加word-break:break-all来换行*/
+        /*方法3：flex布局*/
+        /*.main{*/
+            /*height: 100%;*/
+            /*width: 100%;*/
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*/!*align-content: center;*!/*/
+            /*align-items: center;*/
+        /*}*/
+
+        /*方法4：定位*/
+        /*.main{height: 100%;width: 100%;position: relative;text-align: center;}*/
+        /*.text{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);}*/
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="text">
+        adaisdaisdnaisdnasdasdaadaisdaisdnaisdnasdasdaadaisdaisdnaisdnasdasdaadaisdaisdnaisdnasdasdaadaisdaisdnaisdnasdasda
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*方法1：*/
+        ul{width: 220px;height: 220px;list-style: none;font-size: 0;text-align:center;}
+        ul li{width: 50px;height: 50px;display: inline-block;*display:inline; zoom:1;background-color: #cccccc;font-size: 12px;}
+
+        /*方法3：*/
+        /*ul{width:700px;text-align:center;list-style: none outside none;background:#eee;padding:0 10px;letter-spacing: -4px;/!*根据不同字体字号或许需要做一定的调整*!/*/
+            /*word-spacing: -4px;*/
+            /*font-size: 0;}*/
+        /*ul li{display:inline-block;*display:inline;zoom:1;background:#f60;padding:5px;letter-spacing: normal;word-spacing:normal;font-size:12px;}*/
+    </style>
+</head>
+<body>
+<ul>
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+</ul>
+<!--方法2：-->
+<ul class="test1">
+    <li>
+        关于我们</li><li>
+    客户服务</li><li>
+    招聘信息</li><li>
+    隐私声明
+</li>
+
+    <ul class="test1">
+        <li>关于我们</li
+                ><li>客户服务</li
+            ><li>招聘信息</li
+            ><li>隐私声明</li>
+    </ul>
+</ul>
+
+<div style="border: 10px solid transparent;border-left: 20px solid black;width: 0;height: 0;"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*1.强制不换行*/
+        div{
+            white-space:nowrap;
+        }
+
+        /*2.自动换行*/
+             div{
+                 word-wrap: break-word; //性允许长单词或 URL 地址换行到下一行
+             word-break: normal; //让浏览器实现在任意位置的换行
+             }
+        /*word-wrap是控制换行的。break-word是控制是否断词的。*/
+
+        /*3.强制英文单词断行*/
+             div{
+                 word-break:break-all;
+             }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

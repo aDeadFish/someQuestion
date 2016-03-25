@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var foo = "11"+2-"1";
+    console.log(foo);
+    console.log(typeof foo);
+
+
+    var foo1 = "11"+2+"1";
+    console.log(foo1);
+    console.log(typeof foo1);
+
+    var foo2="get-element-by-id";
+    function combo(msg){
+        var arr=msg.split("-");
+        for(var i=1;i<arr.length;i++){
+            arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+        }
+        msg=arr.join("");
+        return msg;
+    }
+    console.log(combo(foo2));
+
+    var numArray=[3,6,1,4,2];
+    numArray.reverse();
+    numArray.sort(function(a,b){
+        return b-a;
+    });
+
+    var d=new Date();
+    var year = d.getFullYear();
+    var month= d.getMonth()+1;
+    month=month<10 ? '0'+month:month;
+    var day = d.getDay();
+    day=day<10 ? '0'+day:day;
+    alert(year+"-"+month+"-"+day);
+
+
+
+    function serilizeUrl(url){
+        var result ={};
+        url=url.split("?")[1];
+        var map=url.split("&");
+        for(var i=0;i<map.length;i++){
+            result[map[i].split("=")[0]]=map[i].split("=")[i];
+        }
+        return result;
+    }
+
+    for(var i=1;i<=3;i++){
+        setTimeout(function(){
+            console.log(i);
+        },0);
+    }//输出：4 4 4. 原因：Javascript事件处理器在线程空闲之前不会运行。
+    for(var i=1;i<=3;i++){
+        setTimeout((function(a){
+            console.log(a);
+        })(i),0);
+    }//1 2 3  立即执行函数
+
+    var User={
+        count:1,
+        getCount:function(){
+            return this.count;
+        }
+    };
+    console.log(User.getCount());
+    var func=User.getCount;
+    console.log(func());
+</script>
+</body>
+</html>

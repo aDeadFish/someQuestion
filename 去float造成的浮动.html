@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .div1,.div2,.div3{width: 80px;height: 80px;float: left;outline: 1px solid black;}
+
+
+        /*方法3：*/
+        .clearfix:after{content: "";display: table;clear: both;}
+        .clearfix{*zoom: 1;}
+    </style>
+</head>
+<body>
+
+<!--影响（1）：背景不能显示 （2）：边框不能撑开 （3）：margin 设置值不能正确显示-->
+<!--方法2：添加overflow属性，使用hiddent和auto值来清除浮动,auto对seo比较友好，hidden对seo不是太友好-->
+<!--<div style="background-color: #cccccc;border: 1px solid black;overflow: auto;zoom:1;">&lt;!&ndash;zoom: 1; 是在处理兼容性问题.&ndash;&gt;-->
+
+<div style="background-color: #cccccc;border: 1px solid black;" class="clearfix">
+    <div class="div1">1</div>
+    <div class="div2">2</div>
+    <div class="div3">3</div>
+    <!--方法1：添加空标签，加上clear:both样式-->
+    <!--<div style="clear: both;"></div>-->
+</div>
+</body>
+</html>

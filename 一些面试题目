@@ -1,0 +1,214 @@
+简述同步和异步的区别
+
+同步是阻塞模式，异步是非阻塞模式。
+同步就是指一个进程在执行某个请求的时候，若该请求需要一段时间才能返回信息，那么这个进程将会一直等待下去，直到收到返回信息才继续执行下去；
+异步是指进程不需要一直等下去，而是继续执行下面的操作，不管其他进程的状态。当有消息返回时系统会通知进程进行处理，这样可以提高执行的效率。
+
+px和em的区别
+
+px和em都是长度单位，区别是，px的值是固定的，指定是多少就是多少，计算比较容易。em得值不是固定的，并且em会继承父级元素的字体大小。
+浏览器的默认字体高都是16px。所以未经调整的浏览器都符合: 1em=16px。那么12px=0.75em, 10px=0.625em
+
+另外 rem与上述的区别
+
+什么叫优雅降级和渐进增强？
+
+渐进增强 progressive enhancement：
+针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+
+优雅降级 graceful degradation：
+一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+
+区别：
+
+a. 优雅降级是从复杂的现状开始，并试图减少用户体验的供给
+
+b. 渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要
+
+c. 降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带
+
+
+浏览器的内核分别是什么?
+
+IE: trident内核
+Firefox：gecko内核
+Safari：webkit内核
+Opera：以前是presto内核，Opera现已改用Google Chrome的Blink内核
+Chrome：Blink(基于webkit，Google与Opera Software共同开发)
+
+
+1、怎样添加、移除、移动、复制、创建和查找节点？
+
+1）创建新节点
+createDocumentFragment() //创建一个DOM片段
+createElement() //创建一个具体的元素
+createTextNode() //创建一个文本节点
+
+2）添加、移除、替换、插入
+appendChild() //添加
+removeChild() //移除
+replaceChild() //替换
+insertBefore() //插入
+
+3）查找
+getElementsByTagName() //通过标签名称
+getElementsByName() //通过元素的Name属性的值
+getElementById() //通过元素Id，唯一性
+
+//数组去重
+// 方法一：
+var arr1 =[1,2,2,2,3,3,3,4,5,6],
+    arr2 = [];
+for(var i = 0,len = arr1.length; i< len; i++){
+    if(arr2.indexOf(arr1[i]) < 0){
+        arr2.push(arr1[i]);
+    }
+}
+document.write(arr2); // 1,2,3,4,5,6
+
+方法二：
+for(var i=0;i<arr1.length-1;i++){
+    var flag=0;
+    for(var j=1;j<arr1.length;j++){
+        if(arr1[i]==arr1[j])
+        {
+            flag=1;
+        }
+    }
+    if(flag==0){
+        arr2.push(arr1[i]);
+    }
+}
+arr2.push(arr1[arr1.length-1]);
+
+方法三:
+var temp=[];备用数组
+for(var i=0;i<arr1.length;i++){
+    if(!temp[arr1[i]]){
+        arr2.push(arr1[i]);
+    }
+}
+
+
+
+
+function log(){
+    console.log.apply(console, arguments);
+};
+
+arguments是传给log()函数的实参。比如你调用log('hello', 'world')，那么arguments就是['hello', 'world']。
+
+console.log.apply(console, arguments)这个主要是用来把arguments中的每个参数当作实参传递给console.log()的。
+上面代码这样写的一个目的就是为了解决log方法被调用时实际传入参数不确定的问题，
+参数的不确定导致你方法通过常规的console.log方法来输出日志
+
+如果直接像下面这样调用：
+console.log(arguments)
+
+那么会将arguments当作一个数组打印，而不是将其中的每一项作为参数传递给console.log()。也就是说，它的效果是：
+
+console.log(['hello', 'world']) // 打印数组的内容['hello', 'world']
+
+而我们希望的是：
+
+console.log('hello', 'world') // 这时才是打印字符串hello world
+
+apply就正好可以实现这种需求
+
+
+
+Javascript中callee和caller的作用？
+
+caller是返回一个对函数的引用，该函数调用了当前函数；
+
+callee是返回正在被执行的function函数，也就是所指定的function对象的正文。
+
+
+请描述一下cookies，sessionStorage和localStorage的区别
+
+sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。
+因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。而localStorage用于持久化的本地存储，除非主动删除数据，
+否则数据是永远不会过期的。
+
+web storage和cookie的区别
+
+Web Storage的概念和cookie相似，区别是它是为了更大容量存储设计的。
+Cookie的大小是受限的，并且每次你请求一个新的页面的时候Cookie都会被发送过去，这样无形中浪费了带宽，
+另外cookie还需要指定作用域，不可以跨域调用。
+
+除此之外，Web Storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。
+但是Cookie也是不可以或缺的：Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，
+而Web Storage仅仅是为了在本地“存储”数据而生。
+
+
+写一个function，清除字符串前后的空格。（兼容所有浏览器）
+
+function trim(str) {
+    if (str && typeof str === "string") {
+        return str.replace(/(^\s*)|(\s*)$/g,""); //去除前后空白符
+    }
+}
+
+
+
+1、一次完整的HTTP事务是怎样的一个过程？
+
+基本流程：
+
+a. 域名解析
+
+b. 发起TCP的3次握手
+
+c. 建立TCP连接后发起http请求
+
+d. 服务器端响应http请求，浏览器得到html代码
+
+e. 浏览器解析html代码，并请求html代码中的资源
+
+f. 浏览器对页面进行渲染呈现给用户
+
+
+2、对前端工程师这个职位你是怎么样理解的？
+
+a. 前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好
+
+b. 参与项目，快速高质量完成实现效果图，精确到1px；
+
+c. 与团队成员，UI设计，产品经理的沟通；
+
+d. 做好的页面结构，页面重构和用户体验；
+
+e. 处理hack，兼容、写出优美的代码格式；
+
+f. 针对服务器的优化、拥抱最新前端技术。
+
+
+
+
+当一个DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做？
+? 直接在DOM里绑定事件：<div onclick=”test()”></div>
+? 在JS里通过onclick绑定：xxx.onclick = test
+? 通过事件添加进行绑定：addEventListener(xxx, ‘click', test)
+　　那么问题来了，Javascript的事件流模型都有什么？
+?"事件冒泡”：事件开始由最具体的元素接受，然后逐级向上传播
+?"事件捕捉”：事件由最不具体的节点先接收，然后逐级向下，一直到最具体的
+?"DOM事件流”：三个阶段：事件捕捉，目标阶段，事件冒泡
+
+
+什么是Ajax和JSON，它们的优缺点。
+　　Ajax是异步JavaScript和XML，用于在Web页面中实现异步数据交互。
+　　优点：
+?可以使得页面不重载全部内容的情况下加载局部内容，降低数据传输量
+?避免用户不断刷新或者跳转页面，提高用户体验
+　　缺点：
+?对搜索引擎不友好（
+?要实现ajax下的前后退功能成本较大
+?可能造成请求数的增加
+?跨域问题限制
+　　JSON是一种轻量级的数据交换格式，ECMA的一个子集
+　　优点：轻量级、易于人的阅读和编写，便于机器（JavaScript）解析，支持复合数据类型（数组、对象、字符串、数字）
+
+正则表达式构造函数varreg=new RegExp(“xxx”)与正则表达字面量varreg=//有什么不同？匹配邮箱的正则表达式？
+
+  当使用RegExp()构造函数的时候，不仅需要转义引号（即\”表示”），并且还需要双反斜杠（即\\表示一个\）。使用正则表达字面量的效率更高。  邮箱的正则匹配：
+  var  regMail =  /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;

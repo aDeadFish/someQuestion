@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    for(var i=0;i<5;i++){
+        (function(a){
+            console.log(a);
+        })(i)
+    }
+    console.log(i);
+    console.log(eee);
+    var a=[0,1,2,3,4];
+    for(var b in a){
+        var eee=1;
+        console.log(b);
+    }
+    var c = 2||5;
+    var d = 2!=0? 2:5;
+    console.log(c);
+    console.log(d);
+    var e=function(name,age){
+        this.name=name;
+        this.age=age;
+//        return this;
+    }
+    var f=new e("ss",20);
+    console.log(f.name);
+    f.name="dd";
+    f.school="aaa";
+    console.log(f.name);
+    console.log(f.school);
+
+    var aa={},bb={},cc={};//aa,bb,cc每个都引用一个不同的空对象
+    var dd=ee=ff={};//dd,ee,ff都引用同一个空对象
+    var aaa=new Object();
+    console.log(aaa.hasOwnProperty(demo));
+
+
+    Function.prototype.method=function(name,func){
+        this.prototype[name]=func;
+        return this;
+    };
+
+    Number.method('integer',function(){
+        return Math[this<0? 'ceiling':'floor'](this);
+    });
+    String.method('trim',function(){
+        return this.replace(/^\s+|\s+$/g,"");
+    });
+
+    var Mammal = function(name){
+        this.name=name;
+    };
+    Mammal.prototype.get_name = function(){
+        return this.name;
+    };
+    Mammal.prototype.says = function(){
+        return this.saying ||"";
+    };
+
+    var myMammal = new Mammal('Herb the Mammal');
+    var name = myMammal.get_name();
+console.log(name);
+
+    var Cat = function(name,say){
+        this.name=name;
+        this.saying=say;
+    };
+    Cat.prototype = new Mammal();
+    Cat.prototype.constructor =Cat;
+    Cat.prototype.purr=function(n){
+        var i,s="";
+        for(i=0;i<n;i+=1){
+            if(s){
+                s+='-';
+            }
+            s+='r';
+        }
+        return s;
+    };
+    Cat.prototype.get_name = function(){
+        return this.says()+" "+this.name+" "+this.says();
+    };
+
+    var myCat = new Cat('Henrietta',"wowowo");
+    var says = myCat.says();
+    var purr=myCat.purr(5);
+    var name1=myCat.get_name();
+    console.log(says+" "+purr+" "+name1);
+</script>
+</body>
+</html>
